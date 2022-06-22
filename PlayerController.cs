@@ -27,16 +27,31 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate() {
         if(movementInput != Vector2.zero) {
-            int count = rb.Cast(movementInput,
-                movementFilter,
-                castCollision,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset);
-            if(count == 0) {
-                rb.MovePosition(rb.position + moveSpeed * movementInput * Time.fixedDeltaTime);
+            bool succ = tryMove(movementInput);
+
+            if(!tryMove(movementInput)) {
+                if(!tryMove(new Vector2(movementInput.x, 0)));
+                else {
+                    tryMove(new Vector2(0, movementInput.y);
+                }
             }
         }
     }
 
+    private bool tryMove(Vector2 direction) {
+        int count = rb.Cast(direction,
+                movementFilter,
+                castCollision,
+                moveSpeed * Time.fixedDeltaTime + collisionOffset);
+        if(count == 0) {
+            rb.MovePosition(rb.position + moveSpeed * movementInput * Time.fixedDeltaTime);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     } 
