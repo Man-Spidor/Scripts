@@ -32,12 +32,11 @@ public class PlayerController : MonoBehaviour
             if(!succ) {
                 succ = tryMove(new Vector2(movementInput.x, 0));
                 Debug.Log("X Axis");
-                if(!succ) {
+            }
+            else if(!succ) {
                     tryMove(new Vector2(0, movementInput.y));
                     Debug.Log("Y Axis");
-                    
                 }
-            }
         }
     }
 
