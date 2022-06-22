@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
 
+    
+
     Vector2 movementInput;
     Rigidbody2D rb;
     List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
