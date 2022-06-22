@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
         if(movementInput != Vector2.zero) {
             bool succ = tryMove(movementInput);
 
-            if(!tryMove(movementInput)) {
-                if(!tryMove(new Vector2(movementInput.x, 0)));
-                else {
-                    tryMove(new Vector2(0, movementInput.y);
+            if(!succ) {
+                succ = tryMove(new Vector2(movementInput.x, 0));
+                if(!succ) {
+                    tryMove(new Vector2(0, movementInput.y));
                 }
             }
         }
