@@ -31,8 +31,11 @@ public class PlayerController : MonoBehaviour
 
             if(!succ) {
                 succ = tryMove(new Vector2(movementInput.x, 0));
+                Debug.Log("X Axis");
                 if(!succ) {
                     tryMove(new Vector2(0, movementInput.y));
+                    Debug.Log("Y Axis");
+                    
                 }
             }
         }
@@ -54,6 +57,5 @@ public class PlayerController : MonoBehaviour
     
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
-    } 
-
+    }  
 }
