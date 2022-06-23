@@ -44,12 +44,9 @@ public class PlayerController : MonoBehaviour
              movementFilter,
              castCollision,
             moveSpeed * Time.fixedDeltaTime + collisionOffset);
-        Debug.Log("pre if");
-        Debug.Log(count);
          
         if(count == 0) {
             rb.MovePosition(rb.position + moveSpeed * direction * Time.fixedDeltaTime);
-            Debug.Log("post if");
             Debug.Log(count);
             return true;
         }
