@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
                 while (transform.position != targetPos) {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
                 }
+                transform.position = targetPos;
             }
         }
     }
