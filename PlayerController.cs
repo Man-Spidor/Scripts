@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
+    public Transform movePoint;
 
     Vector2 movementInput;
     Rigidbody2D rb;
@@ -20,54 +21,26 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movePoint.parent = null;
     }
 
     // Update is called once per frame
     private void FixedUpdate() {
-        if(!isMoving) {
-            if((transform.position.x % 0.5f == 0) || (transform.position.y % 0.5f == 0)) {
-                Debug.Log("first");              
-                if(movementInput != Vector2.zero) {
-                    int count = rb.Cast(movementInput,
-                        movementFilter,
-                        castCollision,
-                        moveSpeed * Time.fixedDeltaTime + collisionOffset);
-                    
-                    Vector3 targetPos = new Vector2(transform.position.x + movementInput.x, transform.position.y + movementInput.y);            
-                    
-                    Debug.Log(targetPos);
-                    
-                    if(movementInput.x != 0) movementInput.y = 0;
-                    
-                    if(count == 0) {
-                        StartCoroutine(Move(targetPos));
-                    }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f) {
+            if(movementInput != Vector2.zero) {
+                int count = rb.Cast(movementInput,
+                    movementFilter,
+                    castCollision,
+                    moveSpeed * Time.fixedDeltaTime + collisionOffset);
+                
+                if(movementInput.x != 0) movementInput.y = 0;
+                
+                if(count == 0) {
+                    movePoint.position += new Vector3(movementInput.x, movementInput.y, 0f);
+                    // StartCoroutine(Move(targetPos));
                 }
-            }
-            else {
-                Debug.Log("test");
-                Vector3 targetPos = transform.position;
-                float xDiff;
-                float yDiff;
-                if(transform.position.x < 0) {
-                    xDiff = transform.position.x % -0.5f;
-                    targetPos.x = targetPos.x - xDiff - 0.5f;
-                }
-                else {
-                    xDiff = transform.position.x % 0.5f;
-                    targetPos.x = targetPos.x - xDiff + 0.5f;
-                }
-
-                if(transform.position.y < 0) {
-                    yDiff = transform.position.y % -0.5f;
-                    targetPos.y = targetPos.y - yDiff - 0.5f;
-                }
-                else {
-                    yDiff = transform.position.y % 0.5f;
-                    targetPos.y = targetPos.y - yDiff + 0.5f;
-                }
-                StartCoroutine(Move(targetPos));
-            }
+           }
         }
     }
 
