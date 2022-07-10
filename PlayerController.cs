@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
 
-    private bool isMoving;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,21 +40,10 @@ public class PlayerController : MonoBehaviour
                     else {
                         if(movementInput.y < 0) movePoint.position = new Vector3(transform.position.x, transform.position.y - 1, 0);
                         else movePoint.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
-                        // StartCoroutine(Move(targetPos));
                     }
                 }
            }
         }
-    }
-
-    IEnumerator Move(Vector3 targetPos) {
-        isMoving = true;
-        while((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon) {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-        isMoving = false;
     }
     
     void OnMove(InputValue movementValue) {
