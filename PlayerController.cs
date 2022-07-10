@@ -23,21 +23,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate() {
-        if(movementInput != Vector2.zero) {
-            int count = rb.Cast(movementInput,
-                movementFilter,
-                castCollision,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset);
+        if(!isMoving) {
+            if(movementInput != Vector2.zero) {
+                int count = rb.Cast(movementInput,
+                    movementFilter,
+                    castCollision,
+                    moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-            Vector3 targetPos = new Vector2(transform.position.x + movementInput.x, transform.position.y + movementInput.y);            
+                Vector3 targetPos = new Vector2(transform.position.x + movementInput.x, transform.position.y + movementInput.y);            
 
-            if(count == 0) {
-                StartCoroutine(Move(targetPos));
+                if(count == 0) {
+                    StartCoroutine(Move(targetPos));
+                }
             }
         }
     }
