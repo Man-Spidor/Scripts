@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate() {
         if(!isMoving) {
-            if(!(transform.position.x % 0.5f == 0) || !(transform.position.y % 0.5f == 0)) {
+            if((transform.position.x % 0.5f == 0) || (transform.position.y % 0.5f == 0)) {
+                Debug.Log("first");              
                 if(movementInput != Vector2.zero) {
                     int count = rb.Cast(movementInput,
                         movementFilter,
@@ -42,6 +43,30 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(Move(targetPos));
                     }
                 }
+            }
+            else {
+                Debug.Log("test");
+                Vector3 targetPos = transform.position;
+                float xDiff;
+                float yDiff;
+                if(transform.position.x < 0) {
+                    xDiff = transform.position.x % -0.5f;
+                    targetPos.x = targetPos.x - xDiff - 0.5f;
+                }
+                else {
+                    xDiff = transform.position.x % 0.5f;
+                    targetPos.x = targetPos.x - xDiff + 0.5f;
+                }
+
+                if(transform.position.y < 0) {
+                    yDiff = transform.position.y % -0.5f;
+                    targetPos.y = targetPos.y - yDiff - 0.5f;
+                }
+                else {
+                    yDiff = transform.position.y % 0.5f;
+                    targetPos.y = targetPos.y - yDiff + 0.5f;
+                }
+                StartCoroutine(Move(targetPos));
             }
         }
     }
