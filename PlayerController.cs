@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate() {
+    private void Update() {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if(Vector3.Distance(transform.position, movePoint.position) == 0) {
             if(movementInput != Vector2.zero) {
@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
                 if(movementInput.x != 0) movementInput.y = 0;
                 
                 if(count == 0) {
+                    isMoving = true;
                     movePoint.position += new Vector3(movementInput.x, movementInput.y, 0f);
+
                     // StartCoroutine(Move(targetPos));
                 }
            }
