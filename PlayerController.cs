@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
                 Vector3 targetPos = new Vector2(transform.position.x + movementInput.x, transform.position.y + movementInput.y);            
                 
+                Debug.Log(targetPos);
+                
                 if(movementInput.x != 0) movementInput.y = 0;
                 
                 if(count == 0) {
