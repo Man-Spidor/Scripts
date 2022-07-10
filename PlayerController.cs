@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate() {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        if(Vector3.Distance(transform.position, movePoint.position) <= 0.05f) {
+        if(Vector3.Distance(transform.position, movePoint.position) == 0) {
             if(movementInput != Vector2.zero) {
                 int count = rb.Cast(movementInput,
                     movementFilter,
