@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movePoint.parent = null;
+        movePoint.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -35,11 +36,13 @@ public class PlayerController : MonoBehaviour
                     moveSpeed * Time.fixedDeltaTime + collisionOffset);
                 
                 if(movementInput.x != 0) movementInput.y = 0;
-                
-                if(count == 0) {
-                    isMoving = true;
-                    movePoint.position += new Vector3(movementInput.x, movementInput.y, 0f);
 
+                if(count == 0) {
+                    if(movementInput.x < 0) movePoint.position = new Vector3(transform.position.x -1, transform.position.y, 0);
+                    else movePoint.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
+                    
+                    if(movementInput.y < 0) movePoint.position = new Vector3(transform.position.x, transform.position.y - 1, 0);
+                    else movePoint.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
                     // StartCoroutine(Move(targetPos));
                 }
            }
