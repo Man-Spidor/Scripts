@@ -52,9 +52,6 @@ public class PlayerController : MonoBehaviour
                 }
            }
         }
-        else {
-            isMoving = true;
-        }
     }
     
     void OnMove(InputValue movementValue) {
@@ -66,9 +63,6 @@ public class PlayerController : MonoBehaviour
         if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
             inGrass = true;
             if(Random.Range(1, 10) <= 10) Debug.Log("Encountered a wild MOM! OoO");
-        }
-        else {
-
         }
     }
 
