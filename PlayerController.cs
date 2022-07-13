@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
 
     private bool isMoving;
-    private bool inGrass;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviour
 
     void checkForGrass() {
         if(Physics2D.OverlapCircle(movePoint.position, 0.2f, grassLayer)) {
-            inGrass = true;
             if(Random.Range(1, 101) <= 10) Debug.Log("Encountered a wild MOM! OoO");
         }
     }
