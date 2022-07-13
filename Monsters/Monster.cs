@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monsters : MonoBehaviour
+public class Monsters
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    MonsterBase _base;
+    int level;
+    
+    void Monster(MonsterBase pBase, int pLevel) {
+        _base = pBase;
+        level = pLevel;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public int Attack() {
+        return _base.getAtt() * level;
     }
 }
