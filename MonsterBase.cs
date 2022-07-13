@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterBase : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "Monster", menuName = "Monster/Create New Monster")]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class MonsterBase : ScriptableObject
+{
+    [SerializeField] string name;
+    
+    [TextArea]
+    [SerializeField] string description;
+
+    [SerializeField] Sprite frontSprite;
+    [SerializeField] Sprite backSprite;
+
+    [SerializeField] Classes creatureClass;
+
+    [SerializeField] int maxHp;
+    [SerializeField] int attack;
+    [SerializeField] int defense;
+    [SerializeField] int spAttack;
+    [SerializeField] int spDefense;
+    [SerializeField] int speed;
+}
+
+public enum Classes {
+    Tank,
+    Damage,
+    Support
 }
