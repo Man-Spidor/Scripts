@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
     private void Update() {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if(Vector3.Distance(transform.position, movePoint.position) == 0) {
-            if(isMoving) {
-                checkForGrass();
-            } 
             if(movementInput != Vector2.zero) {
                 int count = rb.Cast(movementInput,
                     movementFilter,
@@ -50,7 +47,11 @@ public class PlayerController : MonoBehaviour
                         else movePoint.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
                     }
                 }
+                // transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
            }
+            if(isMoving) {
+                checkForGrass();
+            } 
         }
     }
     
@@ -60,19 +61,9 @@ public class PlayerController : MonoBehaviour
     }  
 
     void checkForGrass() {
-        if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
+        if(Physics2D.OverlapCircle(movePoint.position, 0.2f, grassLayer)) {
             inGrass = true;
-            if(Random.Range(1, 10) <= 10) Debug.Log("Encountered a wild MOM! OoO");
+            if(Random.Range(1, 101) <= 10) Debug.Log("Encountered a wild MOM! OoO");
         }
-    }
-
-    void OnTriggerEnter2D() {
-        if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
-            inGrass = true;
-        }
-    }
-
-    void OnTriggerExit2D() {
-        inGrass = false;
     }
 }
