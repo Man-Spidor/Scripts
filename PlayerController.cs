@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
 
+    private bool isMoving;
     private bool inGrass;
 
     // Start is called before the first frame update
@@ -23,15 +24,16 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movePoint.parent = null;
+        isMoving = false;
     }
 
     // Update is called once per frame
     private void Update() {
-        if(transform.position != movePoint.position) {
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-            checkForGrass();
-        }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if(Vector3.Distance(transform.position, movePoint.position) == 0) {
+            if(isMoving) {
+                checkForGrass();
+            } 
             if(movementInput != Vector2.zero) {
                 int count = rb.Cast(movementInput,
                     movementFilter,
@@ -50,10 +52,14 @@ public class PlayerController : MonoBehaviour
                 }
            }
         }
+        else {
+            isMoving = true;
+        }
     }
     
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
+        isMoving = !isMoving;
     }  
 
     void checkForGrass() {
@@ -64,5 +70,15 @@ public class PlayerController : MonoBehaviour
         else {
 
         }
+    }
+
+    void OnTriggerEnter2D() {
+        if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
+            inGrass = true;
+        }
+    }
+
+    void OnTriggerExit2D() {
+        inGrass = false;
     }
 }
