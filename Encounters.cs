@@ -6,9 +6,10 @@ public class Encounters : MonoBehaviour
 {
     public LayerMask grassLayer;
 
-    private void OnColliderEnter2D() {
+    private void OnTriggerEnter2D() {
         if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
-            if(Random.Range(1, 101) <= 10) Debug.Log("Encountered a wild MOM! OoO");
+            if(Random.Range(1, 10) <= 10) Debug.Log("Encountered a wild MOM! OoO");
         }
+        //Debug.Log("test");
     }
 }
