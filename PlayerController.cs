@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public Transform movePoint;
-
+    public LayerMask grassLayer;
     Vector2 movementInput;
     Rigidbody2D rb;
     List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update() {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        checkForGrass();
         if(Vector3.Distance(transform.position, movePoint.position) == 0) {
             if(movementInput != Vector2.zero) {
                 int count = rb.Cast(movementInput,
@@ -49,4 +50,10 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }  
+
+    void checkForGrass() {
+        if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer)) {
+            if(Random.Range(1, 10) <= 10) Debug.Log("Encountered a wild MOM! OoO");
+        }
+    }
 }
