@@ -78,6 +78,14 @@ public class MonsterBase : ScriptableObject
 public class LearnableAbility {
     [SerializeField] AbilityBase abilityBase;
     [SerializeField] int level;
+
+    public AbilityBase GetBase() {
+        return abilityBase;
+    }
+
+    public int getLevel() {
+        return level;
+    }
 }
 
 public enum Classes {
