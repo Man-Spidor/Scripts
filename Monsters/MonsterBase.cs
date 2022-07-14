@@ -23,6 +23,8 @@ public class MonsterBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] List<LearnableAbility> learnableAbilities; 
+
     public string getName() {
         return name; 
     }
@@ -66,6 +68,16 @@ public class MonsterBase : ScriptableObject
     public int getSpe() {
         return speed;
     }
+
+    public List<LearnableAbility> GetAbilities() {
+        return learnableAbilities;
+    }
+}
+
+[System.Serializable]
+public class LearnableAbility {
+    [SerializeField] AbilityBase abilityBase;
+    [SerializeField] int level;
 }
 
 public enum Classes {
