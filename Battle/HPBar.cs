@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject health;
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void setHP(float HP = 0.5f) {
         
+        health.transform.localScale = new Vector3(HP, 1f);
     }
 }
