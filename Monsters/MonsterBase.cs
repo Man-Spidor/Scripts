@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MonsterBase : ScriptableObject
 {
-    [SerializeField] string name;
+    [SerializeField] string monsterName;
     
     [TextArea]
     [SerializeField] string description;
@@ -26,7 +26,7 @@ public class MonsterBase : ScriptableObject
     [SerializeField] List<LearnableAbility> learnableAbilities; 
 
     public string getName() {
-        return name; 
+        return monsterName; 
     }
 
     public string getDesc() {
