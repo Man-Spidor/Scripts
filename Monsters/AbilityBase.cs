@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class AbilityBase : ScriptableObject
 {
-    [SerializeField] string name;
+    [SerializeField] string abilityName;
     [SerializeField] string description;
     [SerializeField] int power;
     [SerializeField] int cooldown;
 
     public string getName() {
-        return name;
+        return abilityName;
     }
 
     public string getDesc() {
