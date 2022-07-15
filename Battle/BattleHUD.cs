@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
-    [SerializeField] TextMesh nameText;
+    [SerializeField]  nameText;
+
 }
