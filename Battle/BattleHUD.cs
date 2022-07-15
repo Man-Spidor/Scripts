@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
@@ -9,9 +9,9 @@ public class BattleHUD : MonoBehaviour
     [SerializeField] TextMeshPro levelText;
     [SerializeField] HPBar hpBar;
 
-    public void setData(Monster monster) {
+    public void setData(Monsters monster) {
         nameText.text = monster.Base.getName();
         levelText.text = "Lvl " + monster.Level;
-        hpBar.setHP(monster.HP / monster.maxHp);
+        hpBar.setHP((float) monster.HP / monster.Base.getMax());
     }
 }
