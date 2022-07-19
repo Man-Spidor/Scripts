@@ -8,7 +8,7 @@ public class BattleHUD : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] HPBar hpBar;
+    [SerializeField] HPBar hpBar; 
 
     public void setData(Monsters monster) {
         nameText.text = monster.Base.getName();
