@@ -10,7 +10,7 @@ public class Monsters
     public int HP { get; set; }
     public List<Ability> Abilities { get; set; }
 
-    void Monster(MonsterBase pBase, int pLevel) {
+    public Monsters(MonsterBase pBase, int pLevel) {
         Base = pBase;
         Level = pLevel;
         HP = getHP();
