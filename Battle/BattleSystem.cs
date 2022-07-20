@@ -10,6 +10,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleHUD enemyHUD;
 
+    [SerializeField] BattleDialogueBox dialogueBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +23,6 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.Setup();
         playerHUD.setData(playerUnit.monster);
         enemyHUD.setData(enemyUnit.monster);
+        dialogueBox.setDialogue($"A Wild {playerUnit.monster.Base.name} Appeared");
     }
 }
