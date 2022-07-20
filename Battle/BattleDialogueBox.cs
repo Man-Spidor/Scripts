@@ -7,6 +7,14 @@ public class BattleDialogueBox : MonoBehaviour
 {
     [SerializeField] int lettersPerSecond = 30;
     [SerializeField] TextMeshProUGUI dialague;
+    [SerializeField] GameObject actionsSelector;
+    [SerializeField] GameObject moveSelector;
+    [SerializeField] GameObject moveDetails;
+    
+    [SerializeField] List<string> moveText;
+    [SerializeField] List<string> actionText;
+
+    [SerializeField] TextMeshProUGUI detailText;
 
     public void setDialogue(string text) {
         dialague.text = text;
