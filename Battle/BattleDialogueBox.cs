@@ -6,7 +6,7 @@ using TMPro;
 public class BattleDialogueBox : MonoBehaviour
 {
     [SerializeField] int lettersPerSecond = 30;
-    [SerializeField] TextMeshProUGUI dialague;
+    [SerializeField] TextMeshProUGUI dialogue;
     [SerializeField] GameObject actionsSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
@@ -17,15 +17,28 @@ public class BattleDialogueBox : MonoBehaviour
     [SerializeField] TextMeshProUGUI detailText;
 
     public void setDialogue(string text) {
-        dialague.text = text;
+        dialogue.text = text;
     }
 
     public IEnumerator typeDialogue(string text) {
-        dialague.text = "";
+        dialogue.text = "";
 
         foreach (var letter in text) {
-            dialague.text += letter;
+            dialogue.text += letter;
             yield return new WaitForSeconds(1f/lettersPerSecond);
         }
+    }
+
+    public void EnableDialogueText(bool enabled) {
+        dialogue.enabled = enabled;
+    }
+
+    public void EnableActionSelector(bool enabled) {
+        actionsSelector.SetActive(enabled);
+    }
+
+    public void EnableMoveSelector(bool enabled) {
+        moveSelector.SetActive(enabled);
+        moveDetails.SetActive(enabled);
     }
 }
