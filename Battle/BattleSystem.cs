@@ -23,6 +23,6 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.Setup();
         playerHUD.setData(playerUnit.monster);
         enemyHUD.setData(enemyUnit.monster);
-        dialogueBox.setDialogue($"A Wild {playerUnit.monster.Base.name} Appeared");
+        StartCoroutine(dialogueBox.typeDialogue($"A Wild {enemyUnit.monster.Base.name} Appeared"));
     }
 }
