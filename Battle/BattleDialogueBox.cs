@@ -6,13 +6,14 @@ using TMPro;
 public class BattleDialogueBox : MonoBehaviour
 {
     [SerializeField] int lettersPerSecond = 30;
+    [SerializeField] Color highlight;
     [SerializeField] TextMeshProUGUI dialogue;
     [SerializeField] GameObject actionsSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
     
-    [SerializeField] List<string> moveText;
-    [SerializeField] List<string> actionText;
+    [SerializeField] List<TextMeshProUGUI> moveText;
+    [SerializeField] List<TextMeshProUGUI> actionText;
 
     [SerializeField] TextMeshProUGUI detailText;
 
@@ -40,5 +41,12 @@ public class BattleDialogueBox : MonoBehaviour
     public void EnableMoveSelector(bool enabled) {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);
+    }
+    
+    public void updateActionsSelection(int selected) {
+        for(int i = 0; i < actionText.Count; i++) {
+            if(i == selected) actionText[i].color = highlight;
+            else actionText[i].color = Color.black;
+        }
     }
 }

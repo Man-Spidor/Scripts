@@ -13,11 +13,17 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleDialogueBox dialogueBox;
     [SerializeField] BattleState state;
 
+    int currentAction;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(SetupBattle());
     }
+
+    private void Update() {
+        HandleActionSelection();
+    } 
 
     private IEnumerator SetupBattle() {
         playerUnit.Setup();
@@ -34,5 +40,12 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PlayerAction;
         StartCoroutine(dialogueBox.typeDialogue("Choose an action"));
         dialogueBox.EnableActionSelector(true);
+    }
+
+    private void HandleActionSelection() {
+        if(Input.GetKeyDown(KeyCode.DownArrow)) 
+            if(currentAction < 1) ++currentAction;
+        else if(Input.GetKeyUp(KeyCode.UpArrow))
+            if(currentAction > 0) --currentAction;
     }
 }
