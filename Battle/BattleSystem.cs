@@ -43,9 +43,9 @@ public class BattleSystem : MonoBehaviour
     }
 
     private void HandleActionSelection() {
-        if(Input.GetKeyDown(KeyCode.DownArrow)) 
-            if(currentAction < 1) ++currentAction;
-        else if(Input.GetKeyUp(KeyCode.UpArrow))
-            if(currentAction > 0) --currentAction;
+        // if(Input.GetKeyDown(KeyCode.DownArrow)) 
+        //     if(currentAction < 1) ++currentAction;
+        // else if(Input.GetKeyUp(KeyCode.UpArrow))
+        //     if(currentAction > 0) --currentAction;
     }
 }
