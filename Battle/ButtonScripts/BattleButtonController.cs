@@ -8,10 +8,10 @@ public class BattleButtonController : MonoBehaviour
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveDetails;
     [SerializeField] GameObject moveSelector;
-    [SerializeField] GameObject move1Button;
-    [SerializeField] GameObject move2Button;
-    [SerializeField] GameObject move3Button;
-    [SerializeField] GameObject move4Button;
+    // [SerializeField] GameObject move1Button;
+    // [SerializeField] GameObject move2Button;
+    // [SerializeField] GameObject move3Button;
+    // [SerializeField] GameObject move4Button;
 
     public void fightClicked() {
         dialogueBox.SetActive(false);
