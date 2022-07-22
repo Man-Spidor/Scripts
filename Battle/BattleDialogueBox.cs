@@ -15,7 +15,8 @@ public class BattleDialogueBox : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> abilityText;
     [SerializeField] List<TextMeshProUGUI> actionText;
 
-    [SerializeField] TextMeshProUGUI detailText;
+    [SerializeField] TextMeshProUGUI detailTextDesc;
+    [SerializeField] TextMeshProUGUI detailtTextCool;
 
     public void setDialogue(string text) {
         dialogue.text = text;
@@ -51,5 +52,10 @@ public class BattleDialogueBox : MonoBehaviour
             }
             else abilityText[i].text = "-";
         }
+    }
+
+    public void setDetailText(string desc, int cool) {
+        detailTextDesc.text = desc;
+        detailtTextCool.text = cool.ToString();
     }
 }
