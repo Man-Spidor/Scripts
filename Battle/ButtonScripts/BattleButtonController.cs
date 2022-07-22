@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class BattleButtonController : MonoBehaviour
 {
+    [SerializeField] GameObject dialogueBox;
+    [SerializeField] GameObject actionSelector;
+    [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject moveSelector;
+    [SerializeField] GameObject move1Button;
+    [SerializeField] GameObject move2Button;
+    [SerializeField] GameObject move3Button;
+    [SerializeField] GameObject move4Button;
+
     public void fightClicked() {
-        Debug.Log("Fight");
+        dialogueBox.SetActive(false);
+        actionSelector.SetActive(false);
+        moveSelector.SetActive(true);
+        moveDetails.SetActive(true);
     }
 
     public void runClicked() {
-        Debug.Log("Fight");
+        Debug.Log("Run");
     }
 
     public void move1Clicked() {

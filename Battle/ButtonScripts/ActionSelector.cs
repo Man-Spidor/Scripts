@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ActionSelector : MonoBehaviour
 {
-    public void displayActions() {
-        Debug.Log("Test");
+    private void displayMoves() {
+        Debug.Log("Move!!!");
+    }
+
+    public void ButtonClicked() {
+        displayMoves();
     }
 }
