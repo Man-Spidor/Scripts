@@ -46,8 +46,8 @@ public class BattleDialogueBox : MonoBehaviour
     public void setAbilityNames(List<Ability> abilities) {
         for(int i = 0; i < abilityText.Count; ++i) {
             if(i < abilities.Count) {
-                Debug.Log(abilityText[i].text);
                 abilityText[i].text = abilities[i].Base.getName(); 
+                Debug.Log(abilityText[i].text);
             }
             else abilityText[i].text = "-";
         }
