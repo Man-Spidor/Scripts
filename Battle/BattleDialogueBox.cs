@@ -9,10 +9,10 @@ public class BattleDialogueBox : MonoBehaviour
     [SerializeField] Color highlight;
     [SerializeField] TextMeshProUGUI dialogue;
     [SerializeField] GameObject actionsSelector;
-    [SerializeField] GameObject moveSelector;
-    [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject abilitySelector;
+    [SerializeField] GameObject abilityDetails;
     
-    [SerializeField] List<TextMeshProUGUI> moveText;
+    [SerializeField] List<TextMeshProUGUI> abilityText;
     [SerializeField] List<TextMeshProUGUI> actionText;
 
     [SerializeField] TextMeshProUGUI detailText;
@@ -38,9 +38,15 @@ public class BattleDialogueBox : MonoBehaviour
         actionsSelector.SetActive(enabled);
     }
 
-    public void EnableMoveSelector(bool enabled) {
-        moveSelector.SetActive(enabled);
-        moveDetails.SetActive(enabled);
+    public void EnableaAbilitySelector(bool enabled) {
+        abilitySelector.SetActive(enabled);
+        abilityDetails.SetActive(enabled);
     }
     
+    public void setAbilityNames(List<Ability> abilities) {
+        for(int i = 0; i < abilityText.Count; ++i) {
+            if(i < abilities.Count) abilityText[i].text = abilities[i].Base.getName(); 
+            else abilityText[i].text = "-";
+        }
+    }
 }

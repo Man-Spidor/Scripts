@@ -21,15 +21,14 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetupBattle());
     }
 
-    private void Update() {
-        HandleActionSelection();
-    } 
-
     private IEnumerator SetupBattle() {
         playerUnit.Setup();
         enemyUnit.Setup();
         playerHUD.setData(playerUnit.monster);
         enemyHUD.setData(enemyUnit.monster);
+
+        dialogueBox.setAbilityNames(playerUnit.monster.Abilities);
+
         yield return StartCoroutine(dialogueBox.typeDialogue($"A Wild {enemyUnit.monster.Base.name} Appeared"));
         yield return new WaitForSeconds(1f);
 
@@ -40,12 +39,5 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PlayerAction;
         StartCoroutine(dialogueBox.typeDialogue("Choose an action"));
         dialogueBox.EnableActionSelector(true);
-    }
-
-    private void HandleActionSelection() {
-        // if(Input.GetKeyDown(KeyCode.DownArrow)) 
-        //     if(currentAction < 1) ++currentAction;
-        // else if(Input.GetKeyUp(KeyCode.UpArrow))
-        //     if(currentAction > 0) --currentAction;
     }
 }

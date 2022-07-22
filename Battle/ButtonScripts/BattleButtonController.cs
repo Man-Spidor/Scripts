@@ -7,7 +7,7 @@ public class BattleButtonController : MonoBehaviour
     [SerializeField] BattleDialogueBox dialogueBox;
 
     public void fightClicked() {
-        dialogueBox.EnableMoveSelector(true);
+        dialogueBox.EnableaAbilitySelector(true);
         dialogueBox.EnableActionSelector(false);
         dialogueBox.EnableDialogueText(false);
     }
