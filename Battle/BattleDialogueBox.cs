@@ -43,10 +43,4 @@ public class BattleDialogueBox : MonoBehaviour
         moveDetails.SetActive(enabled);
     }
     
-    public void updateActionsSelection(int selected) {
-        for(int i = 0; i < actionText.Count; i++) {
-            if(i == selected) actionText[i].color = highlight;
-            else actionText[i].color = Color.black;
-        }
-    }
 }
