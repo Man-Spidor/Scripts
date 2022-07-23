@@ -6,12 +6,12 @@ public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy }
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleHUD playerHUD;
-    [SerializeField] BattleUnit enemyUnit;
-    [SerializeField] BattleHUD enemyHUD;
-    [SerializeField] BattleDialogueBox dialogueBox;
-    [SerializeField] BattleState state;
+    [SerializeField] protected BattleUnit playerUnit;
+    [SerializeField] protected BattleHUD playerHUD;
+    [SerializeField] protected BattleUnit enemyUnit;
+    [SerializeField] protected BattleHUD enemyHUD;
+    [SerializeField] protected BattleDialogueBox dialogueBox;
+    [SerializeField] protected BattleState state;
 
     int currentAction;
 
