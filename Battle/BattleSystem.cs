@@ -6,12 +6,13 @@ public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy }
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] protected BattleUnit playerUnit;
-    [SerializeField] protected BattleHUD playerHUD;
-    [SerializeField] protected BattleUnit enemyUnit;
-    [SerializeField] protected BattleHUD enemyHUD;
-    [SerializeField] protected BattleDialogueBox dialogueBox;
-    [SerializeField] protected BattleState state;
+    [SerializeField] BattleUnit playerUnit;
+    [SerializeField] BattleHUD playerHUD;
+    [SerializeField] BattleUnit enemyUnit;
+    [SerializeField] BattleHUD enemyHUD;
+    [SerializeField] BattleDialogueBox dialogueBox;
+    [SerializeField] BattleButtonController buttonController;
+    [SerializeField] BattleState state;
 
     int currentAction;
 
@@ -28,8 +29,7 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.setData(enemyUnit.monster);
 
         dialogueBox.setAbilityNames(playerUnit.monster.Abilities);
-        BattleButton battleButton = gameObject.GetComponent<BattleButton>();
-        battleButton.setDetails();
+        buttonController.setDetails(playerUnit.monster.Abilities);
 
         yield return StartCoroutine(dialogueBox.typeDialogue($"A Wild {enemyUnit.monster.Base.name} Appeared"));
         yield return new WaitForSeconds(1f);

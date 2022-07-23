@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleButton : BattleSystem {
-    List<Ability> abilities;
+public class BattleButtonController : MonoBehaviour {
+    [SerializeField] BattleDialogueBox dialogueBox;
     private bool clicked = false;
     
-    public void setDetails() {
-        abilities = playerUnit.monster.Abilities;
+    public void setDetails(List<Ability> abilities) {
+        
     }
     public void fightClicked() {
         dialogueBox.EnableaAbilitySelector(true);
@@ -24,7 +24,7 @@ public class BattleButton : BattleSystem {
         if(!clicked) {
             Debug.Log("Move1");
         }
-        dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
+        // dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
     }
     
     public void move2Clicked() {
