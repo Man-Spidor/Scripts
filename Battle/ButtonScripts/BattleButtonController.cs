@@ -6,7 +6,7 @@ public class BattleButtonController : MonoBehaviour {
     [SerializeField] BattleDialogueBox dialogueBox;
 
     private List<Ability> abilities;
-    private bool clicked = false;
+    private int clicked;
     
     public void setDetails(List<Ability> _abilities) {
         abilities = _abilities;
@@ -22,24 +22,42 @@ public class BattleButtonController : MonoBehaviour {
     }
 
     public void move1Clicked() {
-        clicked = !clicked;
-        if(!clicked) {
+        if(clicked == 1) {
             Debug.Log("Move1");
-        }
-        Debug.Log(abilities[0].Base.getDesc());    
+        }   
         dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
         dialogueBox.EnableAbilityDetails(true);
+
+        clicked = 1;
     }
     
     public void move2Clicked() {
-        Debug.Log("Move2");
+        if(clicked == 2) {
+            Debug.Log("Move 2");
+        }
+        dialogueBox.setDetailText(abilities[1].Base.getDesc(), abilities[1].Base.getCool());
+        dialogueBox.EnableAbilityDetails(true);
+
+        clicked = 2;
     }
     
     public void move3Clicked() {
-        Debug.Log("Move3");
+        if(clicked == 3) {
+            Debug.Log("Move3");
+        }
+        dialogueBox.setDetailText(abilities[2].Base.getDesc(), abilities[2].Base.getCool());
+        dialogueBox.EnableAbilityDetails(true);
+
+        clicked = 3;
     }
     
     public void move4Clicked() {
-        Debug.Log("Move4");
+        if(clicked == 4) {
+            Debug.Log("Move4");
+        }
+        dialogueBox.setDetailText(abilities[3].Base.getDesc(), abilities[3].Base.getCool());
+        dialogueBox.EnableAbilityDetails(true);
+
+        clicked = 4;
     }
 }
