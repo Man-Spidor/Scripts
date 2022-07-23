@@ -57,6 +57,6 @@ public class BattleDialogueBox : MonoBehaviour
 
     public void setDetailText(string desc, int cool) {
         detailTextDesc.text = desc;
-        detailtTextCool.text = cool.ToString();
+        detailtTextCool.text = $"{cool} Turns";
     }
 }
