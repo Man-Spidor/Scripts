@@ -11,12 +11,11 @@ public class BattleDialogueBox : MonoBehaviour
     [SerializeField] GameObject actionsSelector;
     [SerializeField] GameObject abilitySelector;
     [SerializeField] GameObject abilityDetails;
+    [SerializeField] TextMeshProUGUI detailTextDesc;
+    [SerializeField] TextMeshProUGUI detailtTextCool;
     
     [SerializeField] List<TextMeshProUGUI> abilityText;
     [SerializeField] List<TextMeshProUGUI> actionText;
-
-    [SerializeField] TextMeshProUGUI detailTextDesc;
-    [SerializeField] TextMeshProUGUI detailtTextCool;
 
     public void setDialogue(string text) {
         dialogue.text = text;
