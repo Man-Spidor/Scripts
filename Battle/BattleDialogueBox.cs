@@ -41,10 +41,11 @@ public class BattleDialogueBox : MonoBehaviour
 
     public void EnableaAbilitySelector(bool enabled) {
         abilitySelector.SetActive(enabled);
-        abilityDetails.SetActive(enabled);
+        // abilityDetails.SetActive(enabled);
     }
     
     public void setAbilityNames(List<Ability> abilities) {
+        abilityDetails.SetActive(true);
         for(int i = 0; i < abilityText.Count; ++i) {
             if(i < abilities.Count) {
                 abilityText[i].text = abilities[i].Base.getName();

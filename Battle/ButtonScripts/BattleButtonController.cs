@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BattleButtonController : MonoBehaviour {
     [SerializeField] BattleDialogueBox dialogueBox;
+
+    private List<Ability> abilities;
     private bool clicked = false;
     
-    public void setDetails(List<Ability> abilities) {
-        
+    public void setDetails(List<Ability> _abilities) {
+        abilities = _abilities;
     }
     public void fightClicked() {
         dialogueBox.EnableaAbilitySelector(true);
@@ -24,7 +26,7 @@ public class BattleButtonController : MonoBehaviour {
         if(!clicked) {
             Debug.Log("Move1");
         }
-        // dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
+        dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
     }
     
     public void move2Clicked() {
