@@ -28,7 +28,8 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.setData(enemyUnit.monster);
 
         dialogueBox.setAbilityNames(playerUnit.monster.Abilities);
-        BattleButton battleButton = new BattleButton();
+        BattleButton battleButton = gameObject.GetComponent<BattleButton>();
+        
         battleButton.setDetails();
 
         yield return StartCoroutine(dialogueBox.typeDialogue($"A Wild {enemyUnit.monster.Base.name} Appeared"));
