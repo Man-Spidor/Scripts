@@ -39,13 +39,15 @@ public class BattleDialogueBox : MonoBehaviour
         actionsSelector.SetActive(enabled);
     }
 
-    public void EnableaAbilitySelector(bool enabled) {
+    public void EnableAbilitySelector(bool enabled) {
         abilitySelector.SetActive(enabled);
-        // abilityDetails.SetActive(enabled);
+    }
+
+    public void EnableAbilityDetails(bool enabled) {
+        abilityDetails.SetActive(enabled);        
     }
     
     public void setAbilityNames(List<Ability> abilities) {
-        abilityDetails.SetActive(true);
         for(int i = 0; i < abilityText.Count; ++i) {
             if(i < abilities.Count) {
                 abilityText[i].text = abilities[i].Base.getName();

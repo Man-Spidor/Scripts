@@ -12,7 +12,7 @@ public class BattleButtonController : MonoBehaviour {
         abilities = _abilities;
     }
     public void fightClicked() {
-        dialogueBox.EnableaAbilitySelector(true);
+        dialogueBox.EnableAbilitySelector(true);
         dialogueBox.EnableActionSelector(false);
         dialogueBox.EnableDialogueText(false);
     }
@@ -26,7 +26,9 @@ public class BattleButtonController : MonoBehaviour {
         if(!clicked) {
             Debug.Log("Move1");
         }
+        Debug.Log(abilities[0].Base.getDesc());    
         dialogueBox.setDetailText(abilities[0].Base.getDesc(), abilities[0].Base.getCool());
+        dialogueBox.EnableAbilityDetails(true);
     }
     
     public void move2Clicked() {
