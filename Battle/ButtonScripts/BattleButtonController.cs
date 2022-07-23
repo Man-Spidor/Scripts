@@ -7,8 +7,8 @@ public class BattleButton : BattleSystem {
     private bool clicked = false;
     
     public void setDetails() {
-        abilities = playerUnit.monster.Abilities;
-        
+        // BattleUnit pu = playerUnit;
+        // abilities = pu.monster.Abilities;
     }
     public void fightClicked() {
         dialogueBox.EnableaAbilitySelector(true);
